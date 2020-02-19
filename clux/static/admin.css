@@ -1,0 +1,15 @@
+.hero.is-info {
+  background-color: #976913;
+  color: #fff;
+}
+
+.buttons,
+.button.is-info,
+.hero.is-link {
+  background-color: #05446c;
+  color: #fff;
+}
+
+main{
+  background-color: #cbc7b8;
+}

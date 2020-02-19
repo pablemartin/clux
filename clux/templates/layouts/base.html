@@ -1,0 +1,34 @@
+<!doctype html>
+<html class="has-navbar-fixed-bottom">
+    <head>
+        <!-- Required meta tags -->
+        {% include 'head_meta.html' %}
+        {% include 'head_css.html' %}
+        {% include 'head_js.html' %}
+        {% block head_custom_css %}
+        {% endblock %}
+    </head>
+    <body class="">
+        <main class="columns">
+            {% include 'sidebar.html' %}
+            {% block layout %}{% endblock %}
+        </main>
+        {% include 'common_js.html' %}
+        {% block extra_js %}
+        {% endblock %}
+        {% for category, message in get_flashed_messages(with_categories=true) %}
+            <script>
+                $(document).ready(function () {
+                    var notify = $.notify( "{{ message }}" , {
+                        allow_dismiss: true,
+                        type: "{{ category }}",
+                        placement: {
+                            from: "top",
+                            align: "center"
+                        },
+                    });
+                });
+            </script>
+        {% endfor %}
+    </body>
+</html>

@@ -1,0 +1,22 @@
+import os
+
+class ConfigBase(object):
+    SECRET_KEY = os.environ.get('SECRET_KEY') or 'UnaClaveSecretaParaBioleft'
+    SECURITY_PASSWORD_SALT = 'super-secret-random-salt'
+    DATABASE={
+        'name': os.environ.get("POSTGRES_NAME"),
+        'user': os.environ.get("POSTGRES_USER"),
+        'host': os.environ.get("POSTGRES_HOST"),
+        'port': os.environ.get("POSTGRES_PORT"),
+        'password': os.environ.get("POSTGRES_PASSWORD")
+    }
+
+class DevelopmentConfig(ConfigBase):
+    ENV='development'
+    DEBUG=True
+
+class ProductionConfig(ConfigBase):
+    ENV='production'
+    DEBUG=False
+
+Config = DevelopmentConfig

@@ -1,0 +1,119 @@
+{% extends 'layouts/explore.html' %}
+
+{% block content %}
+<!-- <section style="margin:1.5rem"> -->
+<section class='mt-3'>
+    <div class="container-fluid">
+        <div class="row justify-content-sm-center">
+            <div class="col-12 col-sm-10 ">
+                <form class="form-group m-2">
+                    <input class="form-control" type="text" placeholder="Buscar">
+                </form>
+                <!-- <div>
+                    <form class="form-group form-inline">
+                        <input class="form-control form-control-sm" type="text" placeholder="Buscar">
+                        <button class="btn btn-secondary btn-sm " type="submit">Buscar</button>
+                    </form>
+                </div> -->
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="tab" href="#home">Ultimos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#profile">Mas relevantes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#all">Todo</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Filtrar por</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Cultivar</a>
+                            <a class="dropdown-item" href="#">Siembre</a>
+                            <a class="dropdown-item" href="#">Mas filtro</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Otro filtro</a>
+                        </div>
+                    </li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div class="tab-pane fade active show" id="home">
+                        <table class="table table-hover">
+                                <tbody>
+                                    <thead>
+                                        <th>Foto</th>
+                                        <th>Nombre</th>
+                                        <th>Semilla</th>
+                                        <th>Especie</th>
+                                    </thead>
+                                    {% for s in seed_varieties %}
+                                        <tr>
+                                            <td scope="row">
+                                                <img src="https://via.placeholder.com/75/000" alt="Img" class='img-fluid'>
+                                            </td>
+                                            <td>
+                                                <a href="#"><strong>{{ s.name }}</strong></a>
+                                            </td>
+                                            <td>
+                                                <a href="{{ url_for('seed.index', name=s.name.replace(' ','-')) }}"><strong>{{ s.name }}</strong></a>
+                                            </td>
+                                            <td>{{ s.species }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="profile">
+                            <table class="table table-hover">
+                                    <tbody>
+                                        <thead>
+                                            <th>Foto</th>
+                                            <th>Nombre</th>
+                                            <th>Semilla</th>
+                                            <th>Especie</th>
+                                        </thead>
+                                        {% for s in variety %}
+                                            <tr>
+                                                <td scope="row">
+                                                    <img src="https://via.placeholder.com/75/000" alt="Img" class='img-fluid'>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url_for('seed.index', name=s.name.replace(' ','-')) }}"><strong>{{ s.name }}</strong></a>
+                                                </td>
+                                                <td>{{ s.seed.name }}</td>
+                                                <td>{{ s.seed.species }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                            </table>
+                    </div>
+                    <div class="tab-pane fade" id="all">
+                            <table class="table table-hover">
+                                    <tbody>
+                                        <thead>
+                                            <th>Foto</th>
+                                            <th>Nombre</th>
+                                            <th>Semilla</th>
+                                            <th>Especie</th>
+                                        </thead>
+                                        {% for s in variety %}
+                                            <tr>
+                                                <td scope="row">
+                                                    <img src="https://via.placeholder.com/75/000" alt="Img" class='img-fluid'>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url_for('seed.index', name=s.name.replace(' ','-')) }}"><strong>{{ s.name }}</strong></a>
+                                                </td>
+                                                <td>{{ s.seed.name }}</td>
+                                                <td>{{ s.seed.species }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}            

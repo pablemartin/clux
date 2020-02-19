@@ -1,0 +1,24 @@
+[scripts]
+flaskenv = "env FLASK_APP=bioleft FLASK_ENV=developtment flask run"
+
+[packages]
+pytest = "*"
+flask-babel = "*"
+flask-security-too = "*"
+flask-babelex = "*"
+flask = "*"
+peewee = "*"
+peewee-db-evolve = "*"
+psycopg2 = "*"
+wtf-peewee = "*"
+wtforms = "*"
+flask-security = "*"
+flask-admin = "*"
+bcrypt = "*"
+sqlalchemy = "*"
+flask-images = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
